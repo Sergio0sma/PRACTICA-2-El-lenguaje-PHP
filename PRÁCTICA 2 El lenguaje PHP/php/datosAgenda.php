@@ -1,5 +1,5 @@
 <?php
-    
+    // php que muestra los datos de la agenda
     if(!isset($_SESSION["user"])){ // Comprobar si la sesion esta iniciada con el usuario
         header("Location:../index.html");
     }

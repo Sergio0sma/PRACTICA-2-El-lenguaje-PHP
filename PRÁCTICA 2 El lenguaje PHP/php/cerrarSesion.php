@@ -1,4 +1,6 @@
 <?php
+    //php que cierra la sesion del usuario
+
 if(!isset($_SESSION["user"])){ // Comprobar si la sesion esta iniciada con el usuario
     header("Location:../index.html");
 }

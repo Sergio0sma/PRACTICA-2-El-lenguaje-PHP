@@ -1,4 +1,5 @@
 <?php
+    //php que añade contactos a la agenda, borrando o actualizando si es necesario
 
     if(!isset($_SESSION["user"])){ // Comprobar si la sesion esta iniciada con el usuario
         header("Location:../index.html");
@@ -12,16 +13,16 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_POST["name"]) && isset($_POST["local"]) && isset($_POST["phone"])) {
-            if($_POST["local"]=="" && $_POST["phone"]==""){
-                            // Eliminar de la agenda
-            var_dump($_POST["local"]);
-            $nombreAEliminar = $_POST["name"];
-            foreach ($_SESSION["agenda"] as $key => $contacto) {
-                if ($contacto["Nombre"] == $nombreAEliminar) {
-                    unset($_SESSION["agenda"][$key]);
-                    break; // para salir del bucle una vez encontrado el primero
+            if($_POST["local"]=="" && $_POST["phone"]==""){ // Si los campos localidad y telefono estan vacios, eliminar contacto
+                // Eliminar de la agenda
+                var_dump($_POST["local"]);
+                $nombreAEliminar = $_POST["name"];
+                foreach ($_SESSION["agenda"] as $key => $contacto) {
+                    if ($contacto["Nombre"] == $nombreAEliminar) {
+                        unset($_SESSION["agenda"][$key]);
+                        break; // para salir del bucle una vez encontrado el primero
+                    }
                 }
-            }
             // Reindexar el array para evitar huecos
             $_SESSION["agenda"] = array_values($_SESSION["agenda"]);
             header("Location: ./agenda.php");
@@ -41,7 +42,7 @@
                 // Redirigir para evitar reenvio de formulario
                 header("Location: ./agenda.php");
 
-            }else{
+            }else{ // Añadir nueva persona
                 // Recoger datos del formulario
                 $persona = [
                     "Nombre"    => $_POST["name"],

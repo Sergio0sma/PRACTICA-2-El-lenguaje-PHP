@@ -6,6 +6,12 @@
     <title>Agenda telefonos</title>
 </head>
 <body style="background-color: orange; text-align:center">
+    <!-- Pagina principal de la agenda 
+            Muestra los contactos de la agenda 
+            Permite añadir nuevos contactos
+            Permite vaciar la agenda
+            Permite cerrar sesion 
+    -->
     <?php
         session_start();
         if(!isset($_SESSION["user"])){ // Comprobar si la sesion esta iniciada con el usuario
@@ -15,7 +21,7 @@
     <h1>Agenda</h1>
     <div class="datosAgenda">
         <?php
-            include "./datosAgenda.php";
+            include "./datosAgenda.php"; // Incluir los datos de la agenda
             echo "<br>";
         ?>
     </div>
@@ -37,13 +43,13 @@
                 <input type="reset" value="Limpiar campo" id="reset">
             </form>
                 <?php
-                    include "./añadir.php";
+                    include "./añadir.php"; // Incluir el script para añadir contactos
                 ?>
         </fieldset>
     </div>
     <div class="vaciarAgenda">
         <?php
-            include "./vaciarAgenda.php";
+            include "./vaciarAgenda.php"; // Incluir el script para vaciar la agenda
         ?>
     </div>
         <div class="cerrarSesion">
@@ -52,7 +58,7 @@
             <input type="submit" value="cerrar Sesion" id="cerrarSesion">
         </form>
         <?php
-            include "./cerrarSesion.php";
+            include "./cerrarSesion.php"; // Incluir el script para cerrar sesion
         ?>
         </div>
 
